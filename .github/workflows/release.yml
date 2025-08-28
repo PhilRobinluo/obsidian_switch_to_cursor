@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Create release files
+        run: |
+          mkdir release-files
+          cp main.js manifest.json styles.css release-files/
+          cd release-files
+          zip -r ../obsidian-switch-to-cursor-${{ github.ref_name }}.zip .
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            obsidian-switch-to-cursor-${{ github.ref_name }}.zip
+            main.js
+            manifest.json
+            styles.css
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

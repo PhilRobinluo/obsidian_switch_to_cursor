@@ -1,0 +1,9 @@
+/* Styles for the Switch to Cursor plugin */
+
+.switch-to-cursor-ribbon-class {
+    color: var(--text-muted);
+}
+
+.switch-to-cursor-ribbon-class:hover {
+    color: var(--text-normal);
+}

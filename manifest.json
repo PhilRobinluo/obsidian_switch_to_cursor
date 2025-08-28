@@ -1,0 +1,11 @@
+{
+	"id": "obsidian-switch-to-cursor",
+	"name": "Obsidian to Cursor Bridge",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "A plugin to seamlessly switch between Obsidian and Cursor editor",
+	"author": "PhilRobinluo",
+	"authorUrl": "https://github.com/PhilRobinluo",
+	"fundingUrl": "",
+	"isDesktopOnly": true
+}
